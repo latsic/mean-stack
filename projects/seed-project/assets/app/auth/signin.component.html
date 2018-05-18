@@ -1,0 +1,47 @@
+<div class="col-md-8 col-md-offset-2">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          (ngModelChange)="resetErrorMessages()"
+          [ngClass]="{'invalid-credentials': errorMsgEmail != null}"
+        >
+        <p
+          *ngIf="errorMsgEmail != null"
+          class="help-block"
+          >
+          {{ errorMsgEmail }}
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          (ngModelChange)="resetErrorMessages()"
+          [ngClass]="{'invalid-credentials': errorMsgPassword != null}"
+        >
+        <p
+          *ngIf="errorMsgPassword != null"
+          class="help-block"
+          >
+          {{ errorMsgPassword }}
+        </p>
+      </div>
+  
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!myForm.valid"
+      >
+      Submit
+      </button>
+  
+    </form>
+  </div>
